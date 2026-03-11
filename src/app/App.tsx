@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Calendar, User, TrendingUp, Palette, Download, Upload } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import { MonthPicker } from './components/MonthPicker';
 import '../styles/themes.css';
 
@@ -697,6 +698,7 @@ export default function App() {
           </p>
         </div>
       </div>
+      <Analytics />
     </div>
   );
 }
