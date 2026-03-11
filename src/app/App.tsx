@@ -321,79 +321,80 @@ export default function App() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div
-          className="rounded-lg shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 transition-colors duration-300 relative"
+          className="rounded-lg shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 transition-colors duration-300"
           style={{
             backgroundColor: 'var(--card-bg)',
             boxShadow: `0 10px 15px -3px var(--shadow)`
           }}
         >
-          {/* Top Right Controls: Theme + Export/Import */}
-          <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-2">
-            {/* Export Button */}
-            <button
-              onClick={handleExport}
-              title="Export data as JSON backup"
-              className="p-1.5 sm:p-2 rounded-lg transition-all duration-300 hover:opacity-80"
-              style={{
-                backgroundColor: 'var(--input-bg)',
-                border: `1px solid var(--border)`,
-                color: 'var(--text-primary)'
-              }}
+          {/* Header Row: Title + Controls */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
+            <h1
+              className="text-2xl sm:text-3xl text-center sm:text-left transition-colors duration-300"
+              style={{ color: 'var(--text-accent)' }}
             >
-              <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            </button>
-            {/* Import Button */}
-            <button
-              onClick={() => importInputRef.current?.click()}
-              title="Import data from JSON backup"
-              className="p-1.5 sm:p-2 rounded-lg transition-all duration-300 hover:opacity-80"
-              style={{
-                backgroundColor: 'var(--input-bg)',
-                border: `1px solid var(--border)`,
-                color: 'var(--text-primary)'
-              }}
-            >
-              <Upload className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            </button>
-            <input
-              ref={importInputRef}
-              type="file"
-              accept=".json"
-              onChange={handleImport}
-              className="hidden"
-            />
-            {/* Theme Selector */}
-            <div className="relative">
-              <select
-                value={theme}
-                onChange={(e) => setTheme(e.target.value as Theme)}
-                className="appearance-none px-2 py-1.5 pr-7 text-xs sm:text-sm rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 cursor-pointer"
+              Monthly Habit Tracker
+            </h1>
+            <div className="flex items-center justify-center sm:justify-end gap-2 flex-shrink-0">
+              {/* Export Button */}
+              <button
+                onClick={handleExport}
+                title="Export data as JSON backup"
+                className="p-1.5 sm:p-2 rounded-lg transition-all duration-300 hover:opacity-80"
                 style={{
                   backgroundColor: 'var(--input-bg)',
                   border: `1px solid var(--border)`,
-                  color: 'var(--text-primary)',
-                  '--tw-ring-color': 'var(--primary)'
-                } as React.CSSProperties}
+                  color: 'var(--text-primary)'
+                }}
               >
-                {themes.map(t => (
-                  <option key={t.value} value={t.value}>
-                    {t.icon} {t.label}
-                  </option>
-                ))}
-              </select>
-              <Palette
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 pointer-events-none"
-                style={{ color: 'var(--text-secondary)' }}
+                <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </button>
+              {/* Import Button */}
+              <button
+                onClick={() => importInputRef.current?.click()}
+                title="Import data from JSON backup"
+                className="p-1.5 sm:p-2 rounded-lg transition-all duration-300 hover:opacity-80"
+                style={{
+                  backgroundColor: 'var(--input-bg)',
+                  border: `1px solid var(--border)`,
+                  color: 'var(--text-primary)'
+                }}
+              >
+                <Upload className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </button>
+              <input
+                ref={importInputRef}
+                type="file"
+                accept=".json"
+                onChange={handleImport}
+                className="hidden"
               />
+              {/* Theme Selector */}
+              <div className="relative">
+                <select
+                  value={theme}
+                  onChange={(e) => setTheme(e.target.value as Theme)}
+                  className="appearance-none px-2 py-1.5 pr-7 text-xs sm:text-sm rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 cursor-pointer"
+                  style={{
+                    backgroundColor: 'var(--input-bg)',
+                    border: `1px solid var(--border)`,
+                    color: 'var(--text-primary)',
+                    '--tw-ring-color': 'var(--primary)'
+                  } as React.CSSProperties}
+                >
+                  {themes.map(t => (
+                    <option key={t.value} value={t.value}>
+                      {t.icon} {t.label}
+                    </option>
+                  ))}
+                </select>
+                <Palette
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 pointer-events-none"
+                  style={{ color: 'var(--text-secondary)' }}
+                />
+              </div>
             </div>
           </div>
-
-          <h1
-            className="text-2xl sm:text-3xl mb-4 sm:mb-6 text-center transition-colors duration-300 pr-16"
-            style={{ color: 'var(--text-accent)' }}
-          >
-            Monthly Habit Tracker
-          </h1>
 
           {/* User Details */}
           <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
