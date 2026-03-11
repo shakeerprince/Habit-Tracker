@@ -329,14 +329,17 @@ export default function App() {
           }}
         >
           {/* Header Row: Title + Controls */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
+          <div
+            className="flex gap-3 mb-4 sm:mb-6"
+            style={{ flexDirection: 'column', alignItems: 'center' }}
+          >
             <h1
-              className="text-2xl sm:text-3xl text-center sm:text-left transition-colors duration-300"
-              style={{ color: 'var(--text-accent)' }}
+              className="text-2xl sm:text-3xl text-center transition-colors duration-300"
+              style={{ color: 'var(--text-accent)', width: '100%' }}
             >
               Monthly Habit Tracker
             </h1>
-            <div className="flex items-center justify-center sm:justify-end gap-2 flex-shrink-0">
+            <div className="flex items-center justify-center gap-2 flex-shrink-0">
               {/* Export Button */}
               <button
                 onClick={handleExport}
